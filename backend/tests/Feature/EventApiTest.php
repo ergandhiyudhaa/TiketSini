@@ -272,4 +272,124 @@ class EventApiTest extends TestCase
             ->getJson('/api/events/does-not-exist')
             ->assertNotFound();
     }
+
+    public function test_can_search_events(): void
+    {
+        $category = Category::create([
+            'name' => 'Music',
+            'slug' => 'music',
+            'is_active' => true,
+        ]);
+
+        Event::create([
+            'category_id' => $category->id,
+            'title' => 'Java Jazz Festival',
+            'slug' => 'java-jazz-festival',
+            'description' => 'A major jazz festival.',
+            'city' => 'Jakarta',
+            'starts_at' => now()->addDays(30),
+            'status' => 'published',
+        ]);
+
+        Event::create([
+            'category_id' => $category->id,
+            'title' => 'Rock Festival',
+            'slug' => 'rock-festival',
+            'description' => 'A rock music event.',
+            'city' => 'Bandung',
+            'starts_at' => now()->addDays(40),
+            'status' => 'published',
+        ]);
+
+        $response = $this->getJson('/api/events?search=Java');
+
+        $response
+            ->assertOk()
+            ->assertJsonCount(1, 'data')
+            ->assertJsonPath('data.0.slug', 'java-jazz-festival');
+    }
+
+    public function test_can_sort_events_by_latest(): void
+    {
+        $category = Category::create([
+            'name' => 'Music',
+            'slug' => 'music',
+            'is_active' => true,
+        ]);
+
+        $olderEvent = Event::create([
+            'category_id' => $category->id,
+            'title' => 'Older Event',
+            'slug' => 'older-event',
+            'city' => 'Jakarta',
+            'starts_at' => now()->addDays(30),
+            'status' => 'published',
+        ]);
+
+        $latestEvent = Event::create([
+            'category_id' => $category->id,
+            'title' => 'Latest Event',
+            'slug' => 'latest-event',
+            'city' => 'Jakarta',
+            'starts_at' => now()->addDays(60),
+            'status' => 'published',
+        ]);
+
+        $olderEvent->forceFill([
+            'created_at' => now()->subDays(2),
+        ])->saveQuietly();
+
+        $latestEvent->forceFill([
+            'created_at' => now()->subDay(),
+        ])->saveQuietly();
+
+        $response = $this->getJson('/api/events?sort=latest');
+
+        $response
+            ->assertOk()
+            ->assertJsonPath('data.0.slug', 'latest-event')
+            ->assertJsonPath('data.1.slug', 'older-event');
+    }
+
+    public function test_can_control_pagination_size(): void
+    {
+        $category = Category::create([
+            'name' => 'Music',
+            'slug' => 'music',
+            'is_active' => true,
+        ]);
+
+        for ($i = 1; $i <= 5; $i++) {
+            Event::create([
+                'category_id' => $category->id,
+                'title' => "Music Event {$i}",
+                'slug' => "music-event-{$i}",
+                'city' => 'Jakarta',
+                'starts_at' => now()->addDays($i),
+                'status' => 'published',
+            ]);
+        }
+
+        $response = $this->getJson('/api/events?per_page=2');
+
+        $response
+            ->assertOk()
+            ->assertJsonCount(2, 'data')
+            ->assertJsonPath('meta.per_page', 2)
+            ->assertJsonPath('meta.total', 5);
+    }
+
+    public function test_per_page_cannot_exceed_maximum(): void
+    {
+        $response = $this->getJson('/api/events?per_page=100');
+
+        $response->assertUnprocessable();
+    }
+
+    public function test_sort_must_be_supported(): void
+    {
+        $response = $this->getJson('/api/events?sort=popular');
+
+        $response->assertUnprocessable();
+    }
 }
