@@ -50,4 +50,9 @@ class Event extends Model
     {
         return $this->hasMany(TicketType::class);
     }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(EventImage::class);
+    }
 }
