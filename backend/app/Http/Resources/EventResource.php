@@ -14,7 +14,9 @@ class EventResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'description' => $this->description,
-            'cover_image' => $this->cover_image,
+            'cover_image' => $this->cover_image
+                ? asset('storage/' . $this->cover_image)
+                : null,
 
             'category' => $this->whenLoaded('category', function () {
                 return [

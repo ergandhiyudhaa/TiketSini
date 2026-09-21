@@ -15,9 +15,14 @@
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
 }
 
+.event-card:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 4px;
+}
+
 .event-card-image-wrapper {
   position: relative;
-  height: 220px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #e2e8f0;
 }
@@ -89,6 +94,7 @@
   height: 40px;
   padding: 0;
   border: 0;
+  pointer-events: none;
   border-radius: 50%;
   background: #ffffff;
   color: #0f172a;
@@ -169,6 +175,7 @@
 .event-card-detail-button {
   padding: 10px 15px;
   border: 0;
+  pointer-events: none;
   border-radius: 10px;
   background: #eff6ff;
   color: #2563eb;
@@ -185,10 +192,11 @@
 }
 
 @media (max-width: 600px) {
-  .event-card-image-wrapper {
-    height: 200px;
-  }
 
+  .event-card-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+  
   .event-card-body {
     padding: 18px;
   }

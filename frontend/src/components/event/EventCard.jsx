@@ -3,9 +3,12 @@ import {
   MapPin,
   ArrowUpRight,
 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import './EventCard.css'
 
 function EventCard({ event }) {
+  const navigate = useNavigate()
+
   const eventDate = new Date(event.starts_at)
 
   const formattedDate = eventDate.toLocaleDateString('en-US', {
@@ -13,13 +16,16 @@ function EventCard({ event }) {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
+    timeZone: 'Asia/Jakarta',
   })
 
   const ticketPrices = event.ticket_types || []
 
   const lowestPrice =
     ticketPrices.length > 0
-      ? Math.min(...ticketPrices.map((ticket) => Number(ticket.price)))
+      ? Math.min(
+          ...ticketPrices.map((ticket) => Number(ticket.price)),
+        )
       : null
 
   const formattedPrice =
@@ -31,8 +37,26 @@ function EventCard({ event }) {
         }).format(lowestPrice)
       : 'Price unavailable'
 
+  function openEvent() {
+    navigate(`/events/${event.slug}`)
+  }
+
+  function handleKeyDown(eventKey) {
+    if (eventKey.key === 'Enter' || eventKey.key === ' ') {
+      eventKey.preventDefault()
+      openEvent()
+    }
+  }
+
   return (
-    <article className="event-card">
+    <article
+      className="event-card"
+      onClick={openEvent}
+      onKeyDown={handleKeyDown}
+      role="link"
+      tabIndex={0}
+      aria-label={`View ${event.title}`}
+    >
       <div className="event-card-image-wrapper">
         {event.cover_image ? (
           <img
@@ -52,13 +76,9 @@ function EventCard({ event }) {
           </span>
         )}
 
-        <button
-          type="button"
-          className="event-card-arrow"
-          aria-label={`View ${event.title}`}
-        >
+        <span className="event-card-arrow">
           <ArrowUpRight size={18} />
-        </button>
+        </span>
       </div>
 
       <div className="event-card-body">
@@ -91,12 +111,9 @@ function EventCard({ event }) {
             </strong>
           </div>
 
-          <button
-            type="button"
-            className="event-card-detail-button"
-          >
+          <span className="event-card-detail-button">
             Details
-          </button>
+          </span>
         </div>
       </div>
     </article>

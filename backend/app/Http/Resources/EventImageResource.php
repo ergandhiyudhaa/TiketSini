@@ -11,7 +11,9 @@ class EventImageResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => $this->image,
+            'image' => $this->image
+                ? asset('storage/' . $this->image)
+                : null,
             'alt_text' => $this->alt_text,
             'sort_order' => $this->sort_order,
             'is_primary' => $this->is_primary,

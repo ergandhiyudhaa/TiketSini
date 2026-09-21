@@ -22,7 +22,7 @@ class EventController extends Controller
         ]);
 
         $query = Event::query()
-            ->with('category')
+            ->with(['category', 'ticketTypes'])
             ->where('status', 'published')
             ->where('starts_at', '>=', now())
             ->when(
