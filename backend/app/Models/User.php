@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class, 'organizer_id');
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }
