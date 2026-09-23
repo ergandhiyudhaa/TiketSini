@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import {
   Search,
   SlidersHorizontal,
@@ -12,6 +13,7 @@ import EventCard from '../components/event/EventCard'
 import './Events.css'
 
 function Events() {
+  const [searchParams] = useSearchParams()
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -19,7 +21,7 @@ function Events() {
   const [search, setSearch] = useState('')
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-  const [categoryFilter, setCategoryFilter] = useState('')
+  const [categoryFilter, setCategoryFilter] = useState(() => searchParams.get('category') || '')
   const [locationFilter, setLocationFilter] = useState('')
   const [dateFilter, setDateFilter] = useState('')
   const [maxPrice, setMaxPrice] = useState('')

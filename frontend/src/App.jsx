@@ -16,6 +16,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import About from './pages/About'
+import Categories from './pages/Categories'
 import { AuthProvider } from './context/AuthContext'
 
 function HomePage() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/events/:slug" element={<EventDetail />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
