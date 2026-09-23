@@ -4,6 +4,7 @@ import Hero from './components/layout/Hero'
 import CategorySection from './components/event/CategorySection'
 import UpcomingEvents from './components/event/UpcomingEvents'
 import EventDetail from './pages/EventDetail'
+import Events from './pages/Events'
 
 function HomePage() {
   return (
@@ -19,10 +20,10 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
         </Routes>
       </main>
