@@ -31,4 +31,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo(TicketType::class);
     }
+
+    public function tickets(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }
