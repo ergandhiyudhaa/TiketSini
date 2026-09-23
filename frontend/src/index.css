@@ -54,3 +54,51 @@ img {
 #root {
   min-height: 100vh;
 }
+
+/* =========================================================
+   TiketSini Homepage
+   Unified Section Spacing System
+   ========================================================= */
+
+:root {
+  --home-section-y: 96px;
+  --home-section-y-mobile: 64px;
+  --home-content-width: 1180px;
+}
+
+/* Every main homepage section shares the same outer rhythm */
+.home-section,
+.category-section,
+.upcoming-events,
+.trending-events,
+.why-tiketsini,
+.how-it-works,
+.home-cta {
+  padding-top: var(--home-section-y) !important;
+  padding-bottom: var(--home-section-y) !important;
+}
+
+/* Keep all homepage content aligned to one horizontal grid */
+.category-section > *,
+.upcoming-events > *,
+.trending-events > *,
+.why-tiketsini > *,
+.how-it-works > *,
+.home-cta > * {
+  max-width: var(--home-content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .home-section,
+  .category-section,
+  .upcoming-events,
+  .trending-events,
+  .why-tiketsini,
+  .how-it-works,
+  .home-cta {
+    padding-top: var(--home-section-y-mobile) !important;
+    padding-bottom: var(--home-section-y-mobile) !important;
+  }
+}
