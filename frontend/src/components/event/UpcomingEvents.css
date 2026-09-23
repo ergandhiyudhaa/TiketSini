@@ -1,132 +1,150 @@
 .upcoming-events {
-  padding: 96px 24px;
-  background: #f8fafc;
+  padding: 75px 24px 120px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8fafc 100%
+    );
 }
 
 .upcoming-events-container {
-  width: min(1180px, 100%);
+  width: min(1320px, 100%);
   margin: 0 auto;
 }
 
-.upcoming-events-header {
+.upcoming-events-heading {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+
   gap: 40px;
-  margin-bottom: 42px;
+
+  margin-bottom: 32px;
 }
 
-.upcoming-events-header h2 {
-  max-width: 600px;
+.upcoming-events-eyebrow {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #2563eb;
+
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1.8px;
+}
+
+.upcoming-events-heading h2 {
   margin: 0;
+
   color: #0f172a;
-  font-size: clamp(32px, 4vw, 48px);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.03;
+  letter-spacing: -2px;
 }
 
-.upcoming-events-header h2 span {
-  color: #ff8a3d;
-}
-
-.upcoming-events-header p {
+.upcoming-events-heading p {
   max-width: 560px;
-  margin: 16px 0 0;
+
+  margin: 12px 0 0;
+
   color: #64748b;
-  font-size: 16px;
-  line-height: 1.7;
+
+  font-size: 14px;
+  line-height: 1.65;
 }
 
-.upcoming-events-view-all {
+.upcoming-events-heading button {
+  flex-shrink: 0;
+
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #2563eb;
-  font-size: 14px;
-  font-weight: 700;
+
+  height: 44px;
+
+  padding: 0 17px;
+
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #0f172a;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.upcoming-events-view-all:hover {
-  color: #1d4ed8;
+.upcoming-events-heading button:hover {
+  border-color: #93c5fd;
+  color: #2563eb;
+  transform: translateY(-1px);
 }
 
 .upcoming-events-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
 }
 
-.event-card-loading {
-  height: 470px;
+.upcoming-events-state {
+  min-height: 260px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px dashed #dbe4f0;
   border-radius: 22px;
-  background: #e2e8f0;
-  animation: eventCardPulse 1.4s ease-in-out infinite;
-}
 
-@keyframes eventCardPulse {
-  0%,
-  100% {
-    opacity: 0.55;
-  }
+  background: #ffffff;
 
-  50% {
-    opacity: 1;
-  }
+  color: #94a3b8;
+
+  font-size: 13px;
 }
 
 .upcoming-events-error {
-  padding: 32px;
-  border-radius: 20px;
-  background: #fef2f2;
-  color: #b91c1c;
-  text-align: center;
+  color: #dc2626;
 }
 
-.upcoming-events-error p {
-  margin: 0;
-}
-
-.upcoming-events-empty {
-  padding: 64px 24px;
-  border: 1px dashed #cbd5e1;
-  border-radius: 20px;
-  background: #ffffff;
-  text-align: center;
-}
-
-.upcoming-events-empty h3 {
-  margin: 0 0 8px;
-  color: #0f172a;
-  font-size: 20px;
-}
-
-.upcoming-events-empty p {
-  margin: 0;
-  color: #64748b;
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .upcoming-events-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 700px) {
   .upcoming-events {
-    padding: 72px 20px;
+    padding: 65px 20px 85px;
   }
 
-  .upcoming-events-header {
+  .upcoming-events-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+  }
+
+  .upcoming-events-heading h2 {
+    letter-spacing: -1.4px;
   }
 
   .upcoming-events-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 }

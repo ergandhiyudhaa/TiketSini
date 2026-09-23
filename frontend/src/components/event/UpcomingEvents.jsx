@@ -1,79 +1,92 @@
+import { ArrowRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { ArrowRight, CalendarDays } from 'lucide-react'
-import { apiRequest } from '../../lib/api'
+import { getEvents } from '../../services/eventService'
 import EventCard from './EventCard'
 import './UpcomingEvents.css'
 
 function UpcomingEvents() {
+  const navigate = useNavigate()
+
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
+    let active = true
+
     async function loadEvents() {
       try {
-        const response = await apiRequest('/events?per_page=8')
-        setEvents(response.data)
-      } catch (err) {
-        setError(err.message || 'Failed to load events.')
+        const response = await getEvents()
+
+        const data = Array.isArray(response)
+          ? response
+          : response?.data || response?.events || []
+
+        if (active) {
+          setEvents(data.slice(0, 6))
+        }
+      } catch (requestError) {
+        console.error(requestError)
+
+        if (active) {
+          setError('Unable to load events right now.')
+        }
       } finally {
-        setLoading(false)
+        if (active) {
+          setLoading(false)
+        }
       }
     }
 
     loadEvents()
+
+    return () => {
+      active = false
+    }
   }, [])
 
   return (
     <section className="upcoming-events">
       <div className="upcoming-events-container">
-        <div className="upcoming-events-header">
+        <div className="upcoming-events-heading">
           <div>
-            <span className="section-eyebrow">
-              <CalendarDays size={15} />
+            <span className="upcoming-events-eyebrow">
               DON'T MISS OUT
             </span>
 
-            <h2>
-              Upcoming
-              <span> events.</span>
-            </h2>
+            <h2>Events worth showing up for.</h2>
 
             <p>
-              Discover exciting events happening soon and find your next
-              unforgettable experience.
+              Fresh experiences, live moments and things
+              happening around you.
             </p>
           </div>
 
-          <button type="button" className="upcoming-events-view-all">
-            View all events
-            <ArrowRight size={18} />
+          <button
+            type="button"
+            onClick={() => navigate('/events')}
+          >
+            Explore all
+            <ArrowRight size={16} />
           </button>
         </div>
 
         {loading && (
-          <div className="upcoming-events-grid">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                className="event-card-loading"
-                key={index}
-              />
-            ))}
+          <div className="upcoming-events-state">
+            <span>Finding events...</span>
           </div>
         )}
 
         {!loading && error && (
-          <div className="upcoming-events-error">
-            <p>{error}</p>
+          <div className="upcoming-events-state upcoming-events-error">
+            {error}
           </div>
         )}
 
         {!loading && !error && events.length === 0 && (
-          <div className="upcoming-events-empty">
-            <h3>No upcoming events yet.</h3>
-            <p>
-              Check back soon for new events.
-            </p>
+          <div className="upcoming-events-state">
+            No upcoming events available yet.
           </div>
         )}
 
@@ -81,7 +94,7 @@ function UpcomingEvents() {
           <div className="upcoming-events-grid">
             {events.map((event) => (
               <EventCard
-                key={event.id}
+                key={event.id || event.slug}
                 event={event}
               />
             ))}
