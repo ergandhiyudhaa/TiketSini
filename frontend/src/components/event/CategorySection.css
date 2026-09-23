@@ -191,3 +191,31 @@
     scroll-snap-align: start;
   }
 }
+
+/* =========================================================
+   HOMEPAGE CATEGORY ICON FIX
+   Prevent Categories.css from forcing these icons to white
+   ========================================================= */
+
+.category-section .category-icon {
+  color: #2563eb !important;
+}
+
+.category-section .category-icon svg {
+  width: 21px;
+  height: 21px;
+  color: #2563eb !important;
+  stroke: #2563eb !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+
+.category-section .category-item:hover .category-icon {
+  color: #1d4ed8 !important;
+}
+
+.category-section .category-item:hover .category-icon svg {
+  color: #1d4ed8 !important;
+  stroke: #1d4ed8 !important;
+}
+

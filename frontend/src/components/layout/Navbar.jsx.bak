@@ -5,29 +5,11 @@ import { useAuth } from '../../context/useAuth'
 import './Navbar.css'
 
 function Navbar() {
-  const navigate = useNavigate()
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [navbarSearch, setNavbarSearch] = useState('')
-
-  function submitNavbarSearch(event) {
-    event.preventDefault()
-
-    const query = navbarSearch.trim()
-
-    if (!query) {
-      navigate('/events')
-      return
-    }
-
-    setIsSearchOpen(false)
-    navigate(`/events?search=${encodeURIComponent(query)}`)
-  }
-
-
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 
   const { user, loading, isAuthenticated, logout } = useAuth()
+  const navigate = useNavigate()
   const location = useLocation()
 
   function isActivePath(path) {
@@ -109,34 +91,16 @@ function Navbar() {
           >
             About
           </Link>
-                {isSearchOpen && (
-          <form
-            className="navbar-search-panel"
-            onSubmit={submitNavbarSearch}
-          >
-            <Search size={18} />
-            <input
-              autoFocus
-              type="search"
-              value={navbarSearch}
-              onChange={(event) => setNavbarSearch(event.target.value)}
-              placeholder="Search events..."
-              aria-label="Search events"
-            />
-          </form>
-        )}
-</nav>
+        </nav>
 
         <div className="navbar-actions">
           <button
-              type="button"
-              className="navbar-search-button"
-              aria-label="Search events"
-              aria-expanded={isSearchOpen}
-              onClick={() => setIsSearchOpen((current) => !current)}
-            >
-              <Search size={19} />
-            </button>
+            type="button"
+            className="navbar-search-button"
+            aria-label="Search"
+          >
+            <Search size={19} />
+          </button>
 
           {!loading && isAuthenticated ? (
             <div className="navbar-user">

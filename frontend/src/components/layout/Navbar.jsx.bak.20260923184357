@@ -28,6 +28,7 @@ function Navbar() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 
   const { user, loading, isAuthenticated, logout } = useAuth()
+  const navigate = useNavigate()
   const location = useLocation()
 
   function isActivePath(path) {
