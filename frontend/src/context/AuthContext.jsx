@@ -124,6 +124,7 @@ export function AuthProvider({ children }) {
       user,
       token,
       loading,
+      setUser,
       isAuthenticated: Boolean(user && token),
       login,
       register,

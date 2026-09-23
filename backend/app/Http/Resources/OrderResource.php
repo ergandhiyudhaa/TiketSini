@@ -9,15 +9,15 @@ class OrderResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
+        $this->resource->loadMissing('items.ticketType.event');
+
         return [
             'id' => $this->id,
             'order_number' => $this->order_number,
             'status' => $this->status,
-
             'subtotal' => (float) $this->subtotal,
             'service_fee' => (float) $this->service_fee,
             'total' => (float) $this->total,
-
             'expires_at' => $this->expires_at?->toISOString(),
             'created_at' => $this->created_at?->toISOString(),
 

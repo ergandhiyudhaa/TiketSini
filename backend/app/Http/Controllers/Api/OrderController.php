@@ -14,6 +14,21 @@ use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
+    public function index(Request $request): JsonResponse
+    {
+        $orders = $request->user()
+            ->orders()
+            ->with([
+                'items.ticketType.event',
+            ])
+            ->latest()
+            ->get();
+
+        return response()->json([
+            'orders' => OrderResource::collection($orders),
+        ]);
+    }
+
     public function store(Request $request): OrderResource
     {
         $validated = $request->validate([
@@ -100,7 +115,7 @@ class OrderController extends Controller
         }
 
         return new OrderResource(
-            $order->load('items', 'user')
+            $order->load('items.ticketType.event', 'user')
         );
     }
 }

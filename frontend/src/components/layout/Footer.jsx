@@ -47,7 +47,7 @@ function Footer() {
 
               <a href="/events">How it works</a>
               <a href="/events">Contact us</a>
-              <a href="/events">FAQ</a>
+              <a href="/faq">FAQ</a>
             </div>
 
             <div className="site-footer-column">
