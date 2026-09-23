@@ -1,81 +1,259 @@
+/* ============================================================
+   TIKETSINI — PREMIUM FUN FOOTER V2
+   ============================================================ */
+
 .site-footer {
-  padding: 75px 0 28px;
-  background: #020617;
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 28px;
+  background: #08111f;
   color: #ffffff;
+  isolation: isolate;
 }
 
+/* ============================================================
+   TOP BRAND LINE
+   ============================================================ */
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    #2563eb 0%,
+    #4f8cff 35%,
+    #6366f1 70%,
+    #8b5cf6 100%
+  );
+}
+
+/* ============================================================
+   LARGE BACKGROUND WORDMARK
+   ============================================================ */
+
+.site-footer::after {
+  content: "TiketSini";
+  position: absolute;
+  right: -35px;
+  bottom: 45px;
+  z-index: -2;
+  color: rgba(255, 255, 255, 0.025);
+  font-size: clamp(110px, 17vw, 250px);
+  font-weight: 950;
+  letter-spacing: -0.085em;
+  line-height: 0.8;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ============================================================
+   AMBIENT LIGHTS
+   ============================================================ */
+
+.site-footer-container::before {
+  content: "";
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  top: -250px;
+  right: -150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.20) 0%,
+    rgba(59, 130, 246, 0.07) 40%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.site-footer-container::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  left: -230px;
+  bottom: -240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 92, 230, 0.15) 0%,
+    rgba(124, 92, 230, 0.05) 42%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
 .site-footer-container {
+  position: relative;
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
 }
 
+/* ============================================================
+   MAIN
+   ============================================================ */
+
 .site-footer-main {
-  display: flex;
-  justify-content: space-between;
-  gap: 80px;
-  padding-bottom: 70px;
+  display: grid;
+  grid-template-columns: minmax(280px, 1.25fr) minmax(500px, 1fr);
+  gap: 100px;
+  padding: 82px 0 72px;
+}
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.site-footer-brand {
+  position: relative;
+  max-width: 470px;
 }
 
 .site-footer-logo {
+  display: inline-flex;
+  align-items: center;
   color: #ffffff;
-  font-size: 29px;
-  font-weight: 900;
-  letter-spacing: -0.055em;
+  font-size: 42px;
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.95;
   text-decoration: none;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
 }
 
 .site-footer-logo span {
-  color: #60a5fa;
+  position: relative;
+  color: #5b8cff;
 }
 
+
+
+.site-footer-logo:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   BRAND COPY
+   ============================================================ */
+
 .site-footer-brand p {
-  margin: 18px 0 0;
-  color: #64748b;
-  font-size: 14px;
+  margin: 24px 0 0;
+  max-width: 390px;
+  color: #a7b4c7;
+  font-size: 16px;
   line-height: 1.7;
 }
 
+.site-footer-brand::after {
+  content: "MAKE THE MOMENT COUNT.";
+  display: inline-flex;
+  margin-top: 26px;
+  padding: 8px 12px;
+  border: 1px solid rgba(96, 165, 250, 0.20);
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.06);
+  color: #6ea0ff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+/* ============================================================
+   LINK AREA
+   ============================================================ */
+
 .site-footer-links {
   display: grid;
-  grid-template-columns: repeat(3, 150px);
-  gap: 45px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+  padding-top: 5px;
 }
 
 .site-footer-column {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 13px;
 }
 
 .site-footer-column span {
-  margin-bottom: 6px;
-  color: #475569;
+  position: relative;
+  margin-bottom: 9px;
+  color: #64748b;
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+.site-footer-column span::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #3b82f6;
+  vertical-align: 1px;
+}
+
+.site-footer-column:nth-child(2) span::before {
+  background: #6366f1;
+}
+
+.site-footer-column:nth-child(3) span::before {
+  background: #8b5cf6;
 }
 
 .site-footer-column a {
-  color: #94a3b8;
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  color: #b8c4d4;
   font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .site-footer-column a:hover {
   color: #ffffff;
+  transform: translateX(5px);
 }
+
+/* ============================================================
+   BOTTOM
+   ============================================================ */
 
 .site-footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding-top: 24px;
-  border-top: 1px solid #1e293b;
-  color: #475569;
+  padding: 22px 0 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  color: #64748b;
   font-size: 11px;
 }
+
+/* ============================================================
+   SOCIAL
+   ============================================================ */
 
 .site-footer-socials {
   display: flex;
@@ -87,44 +265,121 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background: #0f172a;
-  color: #94a3b8;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #a7b4c7;
   text-decoration: none;
   transition:
-    background 0.2s ease,
-    color 0.2s ease;
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .site-footer-socials a:hover {
-  background: #1e293b;
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.40);
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #6366f1
+  );
   color: #ffffff;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.22);
 }
+
+/* ============================================================
+   INSTAGRAM
+   ============================================================ */
+
+.footer-instagram-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 19px;
+  line-height: 1;
+}
+
+/* ============================================================
+   EXPLORE CTA
+   ============================================================ */
 
 .site-footer-socials .site-footer-explore {
   width: auto;
-  padding: 0 12px;
-  gap: 5px;
+  min-width: 112px;
+  height: 40px;
+  padding: 0 16px;
+  gap: 7px;
+  border: 0;
+  border-radius: 13px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #eef4ff 100%
+  );
+  color: #172033;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 900;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-@media (max-width: 800px) {
+.site-footer-socials .site-footer-explore:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e7efff 100%
+  );
+  color: #2563eb;
+  box-shadow: 0 13px 30px rgba(37, 99, 235, 0.20);
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
   .site-footer-main {
-    flex-direction: column;
-    gap: 50px;
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .site-footer-brand {
+    max-width: 600px;
   }
 
   .site-footer-links {
-    grid-template-columns: repeat(3, 1fr);
+    max-width: 650px;
   }
 }
 
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
 @media (max-width: 600px) {
-  .site-footer {
-    padding-top: 60px;
+  .site-footer-container {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .site-footer-main {
+    gap: 45px;
+    padding: 62px 0 48px;
+  }
+
+  .site-footer-logo {
+    font-size: 35px;
+  }
+
+  .site-footer-brand p {
+    font-size: 14px;
   }
 
   .site-footer-links {
@@ -135,5 +390,205 @@
   .site-footer-bottom {
     align-items: flex-start;
     flex-direction: column;
+    gap: 18px;
   }
+
+  .site-footer-socials {
+    flex-wrap: wrap;
+  }
+
+  .site-footer::after {
+    font-size: 100px;
+    right: -20px;
+  }
+}
+
+/* ============================================================
+   TIKETSINI — FOOTER LOGO SYNC
+   Matches the Navbar logo structure while preserving
+   the existing footer design.
+   ============================================================ */
+
+.site-footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.site-footer-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.24);
+}
+
+.site-footer-logo-text {
+  color: #ffffff;
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.site-footer-logo-text > span {
+  color: #60a5fa;
+}
+
+.site-footer-logo:hover {
+  color: #ffffff;
+}
+
+.site-footer-logo:hover .site-footer-logo-mark {
+  transform: translateY(-1px) rotate(-2deg);
+}
+
+.site-footer-logo-mark {
+  transition: transform 180ms ease;
+}
+
+@media (max-width: 600px) {
+  .site-footer-logo-text {
+    font-size: 27px;
+  }
+
+  .site-footer-logo-mark {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+}
+
+
+
+/* ============================================================
+   TIKETSINI — FOOTER LOGO
+   Exact visual match with Navbar logo
+   ============================================================ */
+
+.site-footer-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.site-footer .ts-logo-mark {
+  position: relative !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 12px !important;
+  background: #2563eb !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22) !important;
+  transform: rotate(-3deg) !important;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.site-footer .ts-logo-mark:hover {
+  transform: rotate(2deg) translateY(-1px) !important;
+  box-shadow: 0 9px 20px rgba(37, 99, 235, 0.28) !important;
+}
+
+.site-footer .ts-logo-ticket {
+  position: relative !important;
+  width: 26px !important;
+  height: 19px !important;
+  display: block !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+}
+
+.site-footer .ts-logo-ticket-cut {
+  position: absolute !important;
+  width: 7px !important;
+  height: 7px !important;
+  top: 6px !important;
+  border-radius: 50% !important;
+  background: #2563eb !important;
+}
+
+.site-footer .ts-logo-ticket-cut-left {
+  left: -3px !important;
+}
+
+.site-footer .ts-logo-ticket-cut-right {
+  right: -3px !important;
+}
+
+.site-footer .ts-logo-ticket-line {
+  position: absolute !important;
+  left: 7px !important;
+  top: 3px !important;
+  width: 1.5px !important;
+  height: 13px !important;
+  background: #dbeafe !important;
+}
+
+.site-footer .ts-logo-ticket-spark {
+  position: absolute !important;
+  right: 4px !important;
+  top: 1px !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  color: #f59e0b !important;
+}
+
+.site-footer .ts-logo-text {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  font-size: 21px !important;
+  line-height: 1 !important;
+  letter-spacing: -0.055em !important;
+  font-weight: 900 !important;
+}
+
+.site-footer .ts-logo-tiket {
+  color: #2563eb !important;
+}
+
+.site-footer .ts-logo-sini {
+  color: #f59e0b !important;
+}
+
+@media (max-width: 700px) {
+  .site-footer .ts-logo-mark {
+    width: 35px !important;
+    height: 35px !important;
+    min-width: 35px !important;
+    border-radius: 11px !important;
+  }
+
+  .site-footer .ts-logo-ticket {
+    width: 24px !important;
+    height: 18px !important;
+  }
+
+  .site-footer .ts-logo-text {
+    font-size: 20px !important;
+  }
+}
+
+/* Remove old footer logo styling */
+.site-footer .site-footer-logo-mark,
+.site-footer .site-footer-logo-text {
+  all: unset;
 }

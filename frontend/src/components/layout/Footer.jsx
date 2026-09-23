@@ -11,7 +11,18 @@ function Footer() {
         <div className="site-footer-main">
           <div className="site-footer-brand">
             <a href="/" className="site-footer-logo">
-              Tiket<span>Sini</span>
+              <span className="ts-logo-mark" aria-hidden="true">
+                <span className="ts-logo-ticket">
+                  <span className="ts-logo-ticket-cut ts-logo-ticket-cut-left"></span>
+                  <span className="ts-logo-ticket-cut ts-logo-ticket-cut-right"></span>
+                  <span className="ts-logo-ticket-line"></span>
+                  <span className="ts-logo-ticket-spark">+</span>
+                </span>
+              </span>
+
+              <span className="ts-logo-text">
+                <span className="ts-logo-tiket">Tiket</span><span className="ts-logo-sini">Sini</span>
+              </span>
             </a>
 
             <p>
