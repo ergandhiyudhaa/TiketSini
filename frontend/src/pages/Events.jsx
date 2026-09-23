@@ -31,10 +31,6 @@ function Events() {
     maxPrice: '',
   })
 
-  useEffect(() => {
-    loadEvents()
-  }, [])
-
   async function loadEvents() {
     try {
       setLoading(true)
@@ -50,6 +46,11 @@ function Events() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    loadEvents()
+  }, [])
+
 
   const categories = useMemo(() => {
     const values = events
@@ -477,7 +478,7 @@ function Events() {
             </span>
 
             <h2>
-              Upcoming events
+              Upcoming <span>events.</span>
             </h2>
           </div>
 

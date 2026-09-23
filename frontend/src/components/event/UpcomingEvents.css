@@ -1,96 +1,289 @@
 .upcoming-events {
-  padding: 88px 24px 88px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #f8fafc 100%
-    );
+  position: relative;
+  overflow: hidden;
+  background: #f8fafc;
 }
 
-.upcoming-events-container {
-  width: min(1320px, 100%);
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.upcoming-events-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/*
+ * Clean background.
+ * Keep the section bright and minimal so the colorful
+ * event cards remain the visual focus.
+ */
+.upcoming-orb,
+.upcoming-dots {
+  display: none;
+}
+
+/* =========================================================
+   INNER
+   ========================================================= */
+
+.upcoming-events-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
 }
 
-.upcoming-events-heading {
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.upcoming-events-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  gap: 60px;
 
-  gap: 40px;
-
-  margin-bottom: 32px;
+  /* IMPORTANT:
+     Give the heading breathing room before cards */
+  margin-bottom: 58px;
 }
 
-.upcoming-events-eyebrow {
-  display: block;
+.upcoming-events-heading {
+  max-width: 720px;
+}
 
-  margin-bottom: 9px;
+/* =========================================================
+   KICKER
+   ========================================================= */
+
+.upcoming-events-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 20px;
 
   color: #2563eb;
 
-  font-size: 10px;
-  font-weight: 850;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 900;
   letter-spacing: 1.8px;
 }
+
+.upcoming-kicker-icon {
+  display: grid;
+  place-items: center;
+
+  width: 29px;
+  height: 29px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 18px rgba(37, 99, 235, 0.24);
+
+  transform: rotate(-6deg);
+}
+
+.upcoming-kicker-dot {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #cbd5e1;
+}
+
+.upcoming-kicker-small {
+  color: #94a3b8;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
 
 .upcoming-events-heading h2 {
   margin: 0;
 
   color: #0f172a;
 
-  font-size: clamp(30px, 3vw, 42px);
-  line-height: 1.03;
-  letter-spacing: -2px;
+  font-size: clamp(48px, 5.2vw, 72px);
+  line-height: 0.94;
+
+  letter-spacing: -4px;
+  font-weight: 900;
+}
+
+.upcoming-events-heading h2 span {
+  display: inline-block;
+
+  margin-left: 14px;
+
+  color: #2563eb;
+
+  transform: rotate(-2deg);
+  transform-origin: left center;
 }
 
 .upcoming-events-heading p {
-  max-width: 560px;
+  max-width: 570px;
 
-  margin: 12px 0 0;
+  margin: 24px 0 0;
 
   color: #64748b;
 
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.75;
 }
 
-.upcoming-events-heading button {
-  flex-shrink: 0;
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
 
+.upcoming-events-side {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  flex-shrink: 0;
+  padding-bottom: 4px;
+}
+
+.upcoming-events-count {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 104px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.05);
+
+  backdrop-filter: blur(12px);
+}
+
+.upcoming-events-count strong {
+  color: #2563eb;
+
+  font-size: 28px;
+  line-height: 1;
+
+  letter-spacing: -1.5px;
+  font-weight: 900;
+}
+
+.upcoming-events-count div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.upcoming-events-count span {
+  color: #64748b;
+
+  font-size: 9px;
+  line-height: 1.1;
+
+  font-weight: 800;
+}
+
+.upcoming-events-view-all {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 
-  height: 44px;
-
-  padding: 0 17px;
-
-  border: 1px solid #dbe4f0;
-  border-radius: 12px;
-
-  background: #ffffff;
   color: #0f172a;
 
-  font: inherit;
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 13px;
+  font-weight: 850;
 
-  cursor: pointer;
+  white-space: nowrap;
+}
+
+.upcoming-events-view-icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #0f172a;
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.15);
 
   transition:
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
-.upcoming-events-heading button:hover {
-  border-color: #93c5fd;
-  color: #2563eb;
-  transform: translateY(-1px);
+.upcoming-events-view-all:hover
+.upcoming-events-view-icon {
+  transform: translate(3px, -3px) rotate(5deg);
+  background: #2563eb;
 }
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.upcoming-events-divider {
+  position: relative;
+
+  height: 1px;
+
+  margin-bottom: 34px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      #e2e8f0 10%,
+      #e2e8f0 90%,
+      transparent 100%
+    );
+}
+
+.upcoming-events-divider span {
+  position: absolute;
+
+  left: 10%;
+
+  top: -3px;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+
+  box-shadow:
+    0 0 0 5px rgba(37, 99, 235, 0.08);
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
 
 .upcoming-events-grid {
   display: grid;
@@ -98,53 +291,191 @@
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 24px;
+  gap: 26px;
 }
 
-.upcoming-events-state {
-  min-height: 260px;
+.upcoming-event-item {
+  min-width: 0;
 
+  animation:
+    upcomingCardIn 0.55s
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    both;
+
+  animation-delay:
+    calc(var(--event-index) * 70ms);
+}
+
+@keyframes upcomingCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.upcoming-events-grid .event-card {
+  height: 100%;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.upcoming-events-loading {
   display: grid;
-  place-items: center;
 
-  border: 1px dashed #dbe4f0;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 26px;
+}
+
+.upcoming-events-loading div {
+  height: 440px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #eef2f7 8%,
+      #f8fafc 18%,
+      #eef2f7 33%
+    );
+
+  background-size: 200% 100%;
+
+  animation:
+    upcomingSkeleton 1.4s infinite;
+}
+
+@keyframes upcomingSkeleton {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.upcoming-events-empty {
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1px dashed #cbd5e1;
   border-radius: 22px;
 
-  background: #ffffff;
+  color: #64748b;
 
-  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 700;
 
-  font-size: 13px;
+  background: rgba(255, 255, 255, 0.6);
 }
 
-.upcoming-events-error {
-  color: #dc2626;
-}
+/* =========================================================
+   TABLET
+   ========================================================= */
 
-@media (max-width: 1050px) {
-  .upcoming-events-grid {
+@media (max-width: 1000px) {
+  .upcoming-events-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
+
+    margin-bottom: 48px;
+  }
+
+  .upcoming-events-side {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .upcoming-events-grid,
+  .upcoming-events-loading {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 700px) {
-  .upcoming-events {
-    padding: 68px 20px 68px;
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+  .upcoming-events-inner {
+    width: min(100% - 32px, 1180px);
   }
 
-  .upcoming-events-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 18px;
+  .upcoming-events-header {
+    margin-bottom: 40px;
   }
 
   .upcoming-events-heading h2 {
-    letter-spacing: -1.4px;
+    font-size: 48px;
+    letter-spacing: -3px;
   }
 
-  .upcoming-events-grid {
+  .upcoming-events-heading h2 span {
+    margin-left: 8px;
+  }
+
+  .upcoming-events-heading p {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .upcoming-events-kicker {
+    margin-bottom: 16px;
+  }
+
+  .upcoming-kicker-small,
+  .upcoming-kicker-dot {
+    display: none;
+  }
+
+  .upcoming-events-side {
+    align-items: center;
+  }
+
+  .upcoming-events-view-all span:first-child {
+    display: none;
+  }
+
+  .upcoming-events-grid,
+  .upcoming-events-loading {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 20px;
+  }
+
+  .upcoming-events-divider {
+    margin-bottom: 26px;
+  }
+
+  .upcoming-dots {
+    right: -50px;
+    top: 130px;
   }
 }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .upcoming-event-item {
+    animation: none;
+  }
+}
+
+/* ============================================================

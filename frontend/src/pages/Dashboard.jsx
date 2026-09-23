@@ -9,7 +9,7 @@ import {
   UserRound,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/useAuth'
 import { getEvents } from '../services/eventService'
 import './Dashboard.css'
 

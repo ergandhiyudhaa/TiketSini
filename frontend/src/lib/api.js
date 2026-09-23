@@ -27,7 +27,7 @@ export async function apiRequest(endpoint, options = {}) {
   try {
     data = await response.json()
   } catch {
-    data = null
+    // Empty response body
   }
 
   if (!response.ok) {

@@ -1,0 +1,105 @@
+<svg
+  width="120"
+  height="120"
+  viewBox="0 0 120 120"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      id="blue"
+      x1="20"
+      y1="20"
+      x2="100"
+      y2="100"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+
+    <linearGradient
+      id="orange"
+      x1="20"
+      y1="80"
+      x2="100"
+      y2="105"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#FF8A00"/>
+      <stop offset="1" stop-color="#FFC107"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Orange ticket -->
+  <path
+    d="M26 48
+       C26 40 32 34 40 34
+       H91
+       C99 34 105 40 105 48
+       V55
+       C98 55 93 60 93 67
+       C93 74 98 79 105 79
+       V86
+       C105 94 99 100 91 100
+       H40
+       C32 100 26 94 26 86
+       V79
+       C33 79 38 74 38 67
+       C38 60 33 55 26 55
+       V48Z"
+    fill="url(#orange)"
+  />
+
+  <!-- Blue ticket -->
+  <path
+    d="M15 32
+       C15 24 21 18 29 18
+       H80
+       C88 18 94 24 94 32
+       V39
+       C87 39 82 44 82 51
+       C82 58 87 63 94 63
+       V70
+       C94 78 88 84 80 84
+       H29
+       C21 84 15 78 15 70
+       V63
+       C22 63 27 58 27 51
+       C27 44 22 39 15 39
+       V32Z"
+    fill="url(#blue)"
+  />
+
+  <!-- Smile -->
+  <path
+    d="M37 48
+       C41 57 49 61 59 61
+       C69 61 77 57 81 48"
+    stroke="white"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+  <!-- Accent -->
+  <path
+    d="M24 13L20 5"
+    stroke="#FF8A00"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M36 10V3"
+    stroke="#FFB000"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M48 13L52 6"
+    stroke="#FF8A00"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+</svg>

@@ -363,3 +363,228 @@
     display: none;
   }
 }
+
+
+
+/* ============================================================
+   ROUTE ACTIVE STATE
+   TiketSini navbar
+   ============================================================ */
+
+.navbar-link.active {
+  color: #0f172a;
+}
+
+.navbar-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+
+/* ============================================================
+   TIKETSINI — PLAYFUL LOGO REDESIGN
+   ============================================================ */
+
+.navbar-logo {
+  gap: 11px;
+  text-decoration: none;
+  transform: translateZ(0);
+}
+
+.navbar-logo-mark {
+  position: relative;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #eff6ff 0%, #ffffff 55%, #fff7ed 100%);
+  box-shadow:
+    0 5px 14px rgba(37, 99, 235, 0.16),
+    inset 0 0 0 1px rgba(37, 99, 235, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.navbar-logo-mark svg {
+  width: 34px;
+  height: 34px;
+  display: block;
+  overflow: visible;
+}
+
+.navbar-logo:hover .navbar-logo-mark {
+  transform: rotate(-4deg) translateY(-1px);
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.20),
+    inset 0 0 0 1px rgba(37, 99, 235, 0.10);
+}
+
+.navbar-logo-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  font-size: 21px;
+  font-weight: 850;
+}
+
+.navbar-logo-ticket {
+  color: #2563eb;
+}
+
+.navbar-logo-sini {
+  color: #f59e0b;
+}
+
+@media (max-width: 700px) {
+  .navbar-logo-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    border-radius: 12px;
+  }
+
+  .navbar-logo-mark svg {
+    width: 31px;
+    height: 31px;
+  }
+
+  .navbar-logo-wordmark {
+    font-size: 20px;
+  }
+}
+
+/* ============================================================
+   END PLAYFUL LOGO REDESIGN
+   ============================================================ */
+
+/* ============================================================
+   TIKETSINI FORCE LOGO
+   Deliberately unique class names so old logo styles
+   cannot accidentally control the new mark.
+   ============================================================ */
+
+.navbar-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.ts-logo-mark {
+  position: relative !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 12px !important;
+  background: #2563eb !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22) !important;
+  transform: rotate(-3deg) !important;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.ts-logo-mark:hover {
+  transform: rotate(2deg) translateY(-1px) !important;
+  box-shadow: 0 9px 20px rgba(37, 99, 235, 0.28) !important;
+}
+
+.ts-logo-ticket {
+  position: relative !important;
+  width: 26px !important;
+  height: 19px !important;
+  display: block !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+}
+
+.ts-logo-ticket-cut {
+  position: absolute !important;
+  width: 7px !important;
+  height: 7px !important;
+  top: 6px !important;
+  border-radius: 50% !important;
+  background: #2563eb !important;
+}
+
+.ts-logo-ticket-cut-left {
+  left: -3px !important;
+}
+
+.ts-logo-ticket-cut-right {
+  right: -3px !important;
+}
+
+.ts-logo-ticket-line {
+  position: absolute !important;
+  left: 7px !important;
+  top: 3px !important;
+  width: 1.5px !important;
+  height: 13px !important;
+  background: #dbeafe !important;
+}
+
+.ts-logo-ticket-spark {
+  position: absolute !important;
+  right: 4px !important;
+  top: 1px !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  color: #f59e0b !important;
+}
+
+.ts-logo-text {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  font-size: 21px !important;
+  line-height: 1 !important;
+  letter-spacing: -0.055em !important;
+  font-weight: 900 !important;
+}
+
+.ts-logo-tiket {
+  color: #2563eb !important;
+}
+
+.ts-logo-sini {
+  color: #f59e0b !important;
+}
+
+@media (max-width: 700px) {
+  .ts-logo-mark {
+    width: 35px !important;
+    height: 35px !important;
+    min-width: 35px !important;
+    border-radius: 11px !important;
+  }
+
+  .ts-logo-ticket {
+    width: 24px !important;
+    height: 18px !important;
+  }
+
+  .ts-logo-text {
+    font-size: 20px !important;
+  }
+}
+
+/* ============================================================
+   END FORCE LOGO
+   ============================================================ */
+

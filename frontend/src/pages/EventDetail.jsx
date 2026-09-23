@@ -65,7 +65,10 @@ function EventDetail() {
     }
   }, [slug])
 
-  const ticketTypes = event?.ticket_types || []
+  const ticketTypes = useMemo(
+    () => event?.ticket_types || [],
+    [event?.ticket_types],
+  )
 
   const totalTickets = Object.values(quantities).reduce(
     (total, quantity) => total + quantity,
@@ -173,13 +176,6 @@ function EventDetail() {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
-    year: 'numeric',
-    timeZone: 'Asia/Jakarta',
-  })
-
-  const shortDate = eventDate.toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'short',
     year: 'numeric',
     timeZone: 'Asia/Jakarta',
   })

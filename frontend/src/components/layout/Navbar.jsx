@@ -1,7 +1,7 @@
-import { Search, Ticket, Menu, X, ChevronDown, User, TicketCheck, LogOut, Sparkles } from 'lucide-react'
+import { Search, Menu, X, ChevronDown, User, TicketCheck, LogOut } from 'lucide-react'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useAuth } from '../../context/useAuth'
 import './Navbar.css'
 
 function Navbar() {
@@ -10,6 +10,18 @@ function Navbar() {
 
   const { user, loading, isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+
+  function isActivePath(path) {
+    if (path === '/') {
+      return location.pathname === '/'
+    }
+
+    return (
+      location.pathname === path ||
+      location.pathname.startsWith(`${path}/`)
+    )
+  }
 
   async function handleLogout() {
     setIsUserMenuOpen(false)
@@ -31,21 +43,26 @@ function Navbar() {
     <header className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={closeMenus}>
-          <span className="navbar-logo-icon">
-            <Ticket size={20} strokeWidth={2.5} />
+          <span className="ts-logo-mark" aria-hidden="true">
+            <span className="ts-logo-ticket">
+              <span className="ts-logo-ticket-cut ts-logo-ticket-cut-left"></span>
+              <span className="ts-logo-ticket-cut ts-logo-ticket-cut-right"></span>
+              <span className="ts-logo-ticket-line"></span>
+              <span className="ts-logo-ticket-spark">+</span>
+            </span>
           </span>
 
-          <span>
-            Tiket<span>Sini</span>
+          <span className="ts-logo-text">
+            <span className="ts-logo-tiket">Tiket</span><span className="ts-logo-sini">Sini</span>
           </span>
-        </Link>
+</Link>
 
         <nav
           className={`navbar-menu ${isMenuOpen ? 'is-open' : ''}`}
         >
           <Link
             to="/"
-            className="navbar-link active"
+            className={`navbar-link ${isActivePath("/") ? "active" : ""}`}
             onClick={closeMenus}
           >
             Home
@@ -53,7 +70,7 @@ function Navbar() {
 
           <Link
             to="/events"
-            className="navbar-link"
+            className={`navbar-link ${isActivePath("/events") ? "active" : ""}`}
             onClick={closeMenus}
           >
             Events
@@ -61,7 +78,7 @@ function Navbar() {
 
           <Link
             to="/categories"
-            className="navbar-link"
+            className={`navbar-link ${isActivePath("/categories") ? "active" : ""}`}
             onClick={closeMenus}
           >
             Categories
@@ -69,7 +86,7 @@ function Navbar() {
 
           <Link
             to="/about"
-            className="navbar-link"
+            className={`navbar-link ${isActivePath("/about") ? "active" : ""}`}
             onClick={closeMenus}
           >
             About

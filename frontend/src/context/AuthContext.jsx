@@ -1,6 +1,5 @@
 import {
   createContext,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -13,7 +12,7 @@ import {
   registerUser,
 } from '../services/authService'
 
-const AuthContext = createContext(null)
+export const AuthContext = createContext(null)
 
 const TOKEN_KEY = 'tiketsini_auth_token'
 const USER_KEY = 'tiketsini_auth_user'
@@ -21,7 +20,6 @@ const USER_KEY = 'tiketsini_auth_user'
 function readStoredUser() {
   try {
     const storedUser = localStorage.getItem(USER_KEY)
-
     return storedUser ? JSON.parse(storedUser) : null
   } catch {
     localStorage.removeItem(USER_KEY)
@@ -33,8 +31,6 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(readStoredUser)
   const [loading, setLoading] = useState(true)
 
-  const token = localStorage.getItem(TOKEN_KEY)
-
   useEffect(() => {
     let mounted = true
 
@@ -45,7 +41,6 @@ export function AuthProvider({ children }) {
         if (mounted) {
           setLoading(false)
         }
-
         return
       }
 
@@ -114,14 +109,15 @@ export function AuthProvider({ children }) {
         await logoutUser()
       }
     } catch {
-      // Even if the server request fails,
-      // clear the local authentication state.
+      // Clear local authentication even if API logout fails.
     } finally {
       localStorage.removeItem(TOKEN_KEY)
       localStorage.removeItem(USER_KEY)
       setUser(null)
     }
   }
+
+  const token = localStorage.getItem(TOKEN_KEY)
 
   const value = useMemo(
     () => ({
@@ -141,16 +137,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   )
-}
-
-export function useAuth() {
-  const context = useContext(AuthContext)
-
-  if (!context) {
-    throw new Error(
-      'useAuth must be used inside an AuthProvider.',
-    )
-  }
-
-  return context
 }

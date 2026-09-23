@@ -2,6 +2,8 @@ import {
   CalendarDays,
   MapPin,
   ArrowUpRight,
+  
+  Ticket,
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import './EventCard.css'
@@ -16,6 +18,12 @@ function EventCard({ event }) {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
+    timeZone: 'Asia/Jakarta',
+  })
+
+  const shortDate = eventDate.toLocaleDateString('en-US', {
+    day: '2-digit',
+    month: 'short',
     timeZone: 'Asia/Jakarta',
   })
 
@@ -37,6 +45,12 @@ function EventCard({ event }) {
         }).format(lowestPrice)
       : 'Price unavailable'
 
+  const categoryName = event.category?.name || 'Event'
+
+  const categoryClass = categoryName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+
   function openEvent() {
     navigate(`/events/${event.slug}`)
   }
@@ -50,7 +64,7 @@ function EventCard({ event }) {
 
   return (
     <article
-      className="event-card"
+      className={`event-card event-card--${categoryClass}`}
       onClick={openEvent}
       onKeyDown={handleKeyDown}
       role="link"
@@ -66,44 +80,67 @@ function EventCard({ event }) {
           />
         ) : (
           <div className="event-card-image-placeholder">
-            <span>{event.category?.name || 'EVENT'}</span>
+            <span>{categoryName}</span>
           </div>
         )}
 
-        {event.category && (
+        <div className="event-card-image-overlay" />
+
+        <div className="event-card-top">
           <span className="event-card-category">
-            {event.category.name}
+            {categoryName}
           </span>
-        )}
+
+          <span className="event-card-date-badge">
+            <strong>{shortDate.split(' ')[0]}</strong>
+            <span>{shortDate.split(' ')[1]}</span>
+          </span>
+        </div>
 
         <span className="event-card-arrow">
-          <ArrowUpRight size={18} />
+          <ArrowUpRight size={19} strokeWidth={2.4} />
         </span>
+
+        <div className="event-card-image-caption">
+          <span>TIKETSINI PRESENTS</span>
+          <strong>{categoryName}</strong>
+        </div>
       </div>
 
       <div className="event-card-body">
-        <h3 className="event-card-title">
-          {event.title}
-        </h3>
+        <div className="event-card-heading">
+          <h3 className="event-card-title">
+            {event.title}
+          </h3>
+
+          <span className="event-card-mini-ticket">
+            <Ticket size={14} />
+          </span>
+        </div>
 
         <div className="event-card-info">
           <div className="event-card-info-item">
-            <CalendarDays size={16} />
+            <CalendarDays size={15} />
             <span>{formattedDate}</span>
           </div>
 
           <div className="event-card-info-item">
-            <MapPin size={16} />
+            <MapPin size={15} />
             <span>
               {event.venue?.city || 'Location TBA'}
             </span>
           </div>
         </div>
 
+        <div className="event-card-divider">
+          <span />
+          <span />
+        </div>
+
         <div className="event-card-footer">
-          <div>
+          <div className="event-card-price-wrapper">
             <span className="event-card-price-label">
-              Starting from
+              Tickets from
             </span>
 
             <strong className="event-card-price">
@@ -112,7 +149,8 @@ function EventCard({ event }) {
           </div>
 
           <span className="event-card-detail-button">
-            Details
+            Explore
+            <ArrowUpRight size={14} />
           </span>
         </div>
       </div>
