@@ -1,0 +1,561 @@
+.how-page {
+  overflow: hidden;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.how-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* HERO */
+
+.how-hero {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 35%, rgba(59, 130, 246, 0.15), transparent 27%),
+    radial-gradient(circle at 15% 80%, rgba(251, 146, 60, 0.12), transparent 25%),
+    #f8fafc;
+}
+
+.how-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 90px 0;
+}
+
+.how-eyebrow,
+.how-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.8px;
+}
+
+.how-hero h1 {
+  max-width: 800px;
+  margin: 18px 0 20px;
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -4px;
+  color: #0f172a;
+}
+
+.how-hero h1 span {
+  color: #2563eb;
+}
+
+.how-hero h1 strong {
+  color: #f97316;
+  font-weight: 900;
+}
+
+.how-hero-content > p {
+  max-width: 590px;
+  margin: 0 0 30px;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.how-primary-button,
+.how-secondary-button,
+.how-cta button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.how-primary-button {
+  padding: 14px 20px;
+  color: #ffffff;
+  background: #2563eb;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+}
+
+.how-primary-button:hover,
+.how-secondary-button:hover,
+.how-cta button:hover {
+  transform: translateY(-2px);
+}
+
+.how-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.how-hero-orb-one {
+  width: 340px;
+  height: 340px;
+  right: 7%;
+  top: 80px;
+  background: rgba(37, 99, 235, 0.07);
+}
+
+.how-hero-orb-two {
+  width: 170px;
+  height: 170px;
+  right: 23%;
+  bottom: 40px;
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.how-floating-ticket {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 16px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(12px);
+  animation: floatTicket 4s ease-in-out infinite;
+}
+
+.how-floating-ticket svg {
+  color: #2563eb;
+}
+
+.how-floating-ticket div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.how-floating-ticket strong {
+  font-size: 12px;
+}
+
+.how-floating-ticket small {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.how-floating-ticket-one {
+  right: 10%;
+  top: 145px;
+}
+
+.how-floating-ticket-one > svg:last-child {
+  color: #22c55e;
+}
+
+.how-floating-ticket-two {
+  right: 21%;
+  bottom: 105px;
+  animation-delay: -1.5s;
+}
+
+@keyframes floatTicket {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(1deg);
+  }
+}
+
+/* STEPS */
+
+.how-steps-section {
+  padding: 105px 0;
+}
+
+.how-section-heading {
+  max-width: 650px;
+  margin-bottom: 48px;
+}
+
+.how-section-heading h2 {
+  margin: 10px 0 10px;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -2.5px;
+}
+
+.how-section-heading p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.how-step {
+  position: relative;
+  min-height: 250px;
+  padding: 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  background: #ffffff;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.how-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.how-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.how-step-number {
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.how-step-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.how-step h3 {
+  margin: 30px 0 9px;
+  font-size: 17px;
+}
+
+.how-step p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.how-step-arrow {
+  position: absolute;
+  top: 42px;
+  right: -28px;
+  z-index: 2;
+  color: #cbd5e1;
+}
+
+/* TICKET */
+
+.how-ticket-section {
+  padding: 0 0 105px;
+}
+
+.how-ticket-card {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  padding: 65px;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #0f172a;
+}
+
+.how-ticket-copy .how-section-label {
+  color: #93c5fd;
+}
+
+.how-ticket-copy h2 {
+  margin: 14px 0 18px;
+  color: #ffffff;
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1;
+  letter-spacing: -2.5px;
+}
+
+.how-ticket-copy h2 span {
+  color: #60a5fa;
+}
+
+.how-ticket-copy > p {
+  max-width: 500px;
+  margin: 0 0 25px;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+.how-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 28px;
+}
+
+.how-feature-list div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.how-feature-list svg {
+  color: #60a5fa;
+}
+
+.how-secondary-button {
+  padding: 13px 18px;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.how-ticket-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.how-ticket {
+  position: relative;
+  width: 300px;
+  min-height: 390px;
+  padding: 25px;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+  transform: rotate(3deg);
+}
+
+.how-ticket::before,
+.how-ticket::after {
+  content: '';
+  position: absolute;
+  top: 53%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0f172a;
+}
+
+.how-ticket::before {
+  left: -11px;
+}
+
+.how-ticket::after {
+  right: -11px;
+}
+
+.how-ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #2563eb;
+}
+
+.how-ticket-logo {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.how-ticket-logo span {
+  color: #0f172a;
+}
+
+.how-ticket-event {
+  margin-top: 70px;
+}
+
+.how-ticket-event span,
+.how-ticket-details small {
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.how-ticket-event strong {
+  display: block;
+  margin-top: 9px;
+  color: #0f172a;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+
+.how-ticket-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 55px;
+  padding-top: 18px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.how-ticket-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.how-ticket-details strong {
+  font-size: 10px;
+}
+
+.how-ticket-barcode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+
+.barcode-lines {
+  width: 175px;
+  height: 30px;
+  background: repeating-linear-gradient(
+    90deg,
+    #0f172a 0,
+    #0f172a 2px,
+    transparent 2px,
+    transparent 5px
+  );
+}
+
+/* CTA */
+
+.how-cta-section {
+  padding: 0 0 100px;
+}
+
+.how-cta {
+  padding: 65px 30px;
+  text-align: center;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.12), transparent 30%),
+    #f8fafc;
+}
+
+.how-cta > svg {
+  color: #f97316;
+}
+
+.how-cta h2 {
+  margin: 14px 0 9px;
+  font-size: clamp(30px, 4vw, 45px);
+  letter-spacing: -2px;
+}
+
+.how-cta p {
+  margin: 0 0 25px;
+  color: #64748b;
+}
+
+.how-cta button {
+  padding: 13px 19px;
+  color: #ffffff;
+  background: #2563eb;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .how-floating-ticket-one {
+    right: 5%;
+  }
+
+  .how-floating-ticket-two {
+    right: 12%;
+  }
+
+  .how-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .how-step-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .how-container {
+    width: min(100% - 36px, 600px);
+  }
+
+  .how-hero {
+    min-height: auto;
+  }
+
+  .how-hero-content {
+    padding: 75px 0 90px;
+  }
+
+  .how-hero h1 {
+    font-size: clamp(42px, 12vw, 65px);
+    letter-spacing: -3px;
+  }
+
+  .how-floating-ticket {
+    display: none;
+  }
+
+  .how-steps-section {
+    padding: 75px 0;
+  }
+
+  .how-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .how-ticket-card {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding: 40px 25px;
+  }
+
+  .how-ticket-visual {
+    order: -1;
+  }
+
+  .how-ticket {
+    width: min(300px, 90%);
+  }
+}
+
+@media (max-width: 480px) {
+  .how-hero h1 {
+    font-size: 43px;
+  }
+
+  .how-ticket-section {
+    padding-bottom: 75px;
+  }
+
+  .how-ticket {
+    transform: rotate(0);
+  }
+
+  .how-cta-section {
+    padding-bottom: 75px;
+  }
+}

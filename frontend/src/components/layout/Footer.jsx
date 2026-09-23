@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import {
   ArrowUpRight,
   Mail,
@@ -45,7 +47,7 @@ function Footer() {
             <div className="site-footer-column">
               <span>HELP</span>
 
-              <a href="/events">How it works</a>
+              <Link to="/how-it-works">How it works</Link>
               <a href="/events">Contact us</a>
               <a href="/faq">FAQ</a>
             </div>
