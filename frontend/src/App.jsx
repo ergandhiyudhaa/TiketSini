@@ -12,6 +12,10 @@ import HomeCTA from './components/home/HomeCTA'
 import Footer from './components/layout/Footer'
 
 import Checkout from './pages/Checkout'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+import { AuthProvider } from './context/AuthContext'
 
 function HomePage() {
   return (
@@ -29,7 +33,8 @@ function HomePage() {
 
 function App() {
   return (
-    <div className="app">
+    <AuthProvider>
+      <div className="app">
       <Navbar />
       <main>
         <Routes>
@@ -37,10 +42,14 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </main>
       <Footer />
-    </div>
+      </div>
+    </AuthProvider>
   )
 }
 
