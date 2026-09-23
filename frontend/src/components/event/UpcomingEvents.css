@@ -1,5 +1,5 @@
 .upcoming-events {
-  padding: 75px 24px 120px;
+  padding: 88px 24px 88px;
 
   background:
     linear-gradient(
@@ -130,7 +130,7 @@
 
 @media (max-width: 700px) {
   .upcoming-events {
-    padding: 65px 20px 85px;
+    padding: 68px 20px 68px;
   }
 
   .upcoming-events-heading {

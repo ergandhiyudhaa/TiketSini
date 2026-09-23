@@ -1,0 +1,120 @@
+.home-cta-section {
+  padding: 88px 0;
+  background: #f8fafc;
+}
+
+.home-cta-container {
+  position: relative;
+  width: min(1180px, calc(100% - 40px));
+  min-height: 430px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 32px;
+  background:
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(96, 165, 250, 0.5),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 18% 85%,
+      rgba(251, 191, 36, 0.22),
+      transparent 30%
+    ),
+    #2563eb;
+}
+
+.home-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 690px;
+  padding: 70px;
+}
+
+.home-cta-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+  color: #bfdbfe;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.home-cta-content h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(42px, 5.5vw, 70px);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.home-cta-content h2 span {
+  color: #fde68a;
+}
+
+.home-cta-content p {
+  max-width: 500px;
+  margin: 23px 0 30px;
+  color: #dbeafe;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.home-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.home-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+}
+
+.home-cta-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.home-cta-glow-one {
+  width: 310px;
+  height: 310px;
+  right: 60px;
+  bottom: -150px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.home-cta-glow-two {
+  width: 210px;
+  height: 210px;
+  right: 115px;
+  bottom: -100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 650px) {
+  .home-cta-section {
+    padding: 68px 0;
+  }
+
+  .home-cta-container {
+    min-height: auto;
+    border-radius: 24px;
+  }
+
+  .home-cta-content {
+    padding: 48px 28px;
+  }
+}

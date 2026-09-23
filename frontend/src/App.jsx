@@ -5,6 +5,12 @@ import CategorySection from './components/event/CategorySection'
 import UpcomingEvents from './components/event/UpcomingEvents'
 import EventDetail from './pages/EventDetail'
 import Events from './pages/Events'
+import TrendingEvents from './components/home/TrendingEvents'
+import WhyTiketSini from './components/home/WhyTiketSini'
+import HowItWorks from './components/home/HowItWorks'
+import HomeCTA from './components/home/HomeCTA'
+import Footer from './components/layout/Footer'
+
 import Checkout from './pages/Checkout'
 
 function HomePage() {
@@ -13,6 +19,10 @@ function HomePage() {
       <Hero />
       <CategorySection />
       <UpcomingEvents />
+      <TrendingEvents />
+      <WhyTiketSini />
+      <HowItWorks />
+      <HomeCTA />
     </>
   )
 }
@@ -29,6 +39,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }

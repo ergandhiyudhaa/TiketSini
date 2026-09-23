@@ -1,5 +1,5 @@
 .category-section {
-  padding: 95px 24px 35px;
+  padding: 88px 24px 88px;
   background: #ffffff;
 }
 
@@ -159,7 +159,7 @@
 
 @media (max-width: 600px) {
   .category-section {
-    padding: 70px 20px 25px;
+    padding: 68px 20px 68px;
   }
 
   .category-heading {
