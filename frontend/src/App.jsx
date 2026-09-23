@@ -5,6 +5,7 @@ import CategorySection from './components/event/CategorySection'
 import UpcomingEvents from './components/event/UpcomingEvents'
 import EventDetail from './pages/EventDetail'
 import Events from './pages/Events'
+import Checkout from './pages/Checkout'
 
 function HomePage() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
     </div>
